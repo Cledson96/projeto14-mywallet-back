@@ -2,7 +2,7 @@ import { registroSchema } from "../models/registro.models.js";
 import { registro } from "../database/db.js";
 import dayjs from "dayjs"
 
-export async function entrada (req,res){
+export async function saida (req,res){
     const { valor, descricao} = req.body;
     console.log(res.locals.user) 
 
@@ -12,7 +12,7 @@ export async function entrada (req,res){
         return
     }
     try {
-        await registro.insertOne({ email : res.locals.user, descricao ,valor , tipo: "entrada",data:dayjs().format("DD/MM")});
+        await registro.insertOne({ email : res.locals.user, descricao ,valor , tipo: "saida",data:dayjs().format("DD/MM")});
         res.status(201).send("registro cadastrado com sucesso!");
     } catch (err) {
         res.status(500).send(err);

@@ -40,7 +40,7 @@ export async function login(req, res) {
                 
             }
         
-        sessao.insertOne({ token, id: cadastrado._id });
+        sessao.insertOne({ token, id: cadastrado._id ,email});
         res.send({ token });
     } catch (err) {
         console.log(err);
