@@ -5,7 +5,7 @@ import login from "./routes/login.route.js";
 import entrada from "./routes/entrada.route.js";
 import saida from "./routes/saida.route.js";
 import registros from "./routes/registros.route.js";
-import deletar from "./routes/delete.route.js"
+import deletar from "./routes/deleta.route.js"
 
 const app = express();
 app.use(express.json());
