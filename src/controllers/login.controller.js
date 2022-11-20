@@ -7,6 +7,7 @@ import { sessao } from "../database/db.js"
 export async function login(req, res) {
     const { email, password } = req.body;
 
+
     const validation = loginSchema.validate(req.body, { abortEarly: false });
     if (validation.error) {
         res.status(422).send(validation.error.message);
@@ -29,14 +30,16 @@ export async function login(req, res) {
 
         const sessaoativa = await sessao.findOne({ id: cadastrado._id });
         console.log(sessaoativa)
+ 
        
-
+        res.locals.usuario = sessaoativa;
         if (sessaoativa) {
             return res
                 .status(401)
                 .send({ message: "Você já está logado" });
-        }
-
+                
+            }
+        
         sessao.insertOne({ token, id: cadastrado._id });
         res.send({ token });
     } catch (err) {
