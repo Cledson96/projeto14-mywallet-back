@@ -4,8 +4,7 @@ import dayjs from "dayjs"
 
 export async function saida (req,res){
     const { valor, descricao} = req.body;
-    console.log(res.locals.user) 
-
+  
     const validation = registroSchema.validate(req.body, { abortEarly: false });
     if (validation.error) {
         res.status(422).send(validation.error.message);

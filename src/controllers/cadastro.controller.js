@@ -6,7 +6,6 @@ export async function cadastro(req, res) {
 
     const { name, email, password } = req.body;
 
-
     const validation = cadastroSchema.validate(req.body, { abortEarly: false });
     if (validation.error) {
         res.status(422).send(validation.error.message);

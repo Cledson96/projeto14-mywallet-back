@@ -10,5 +10,4 @@ export async function registros (req,res){
         res.status(500).send(err);
     }
 
-
 }
