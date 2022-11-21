@@ -26,17 +26,16 @@ export async function login(req, res) {
         }
 
         const sessaoativa = await sessao.findOne({ id: cadastrado._id });
-             
+
         res.locals.usuario = sessaoativa;
         if (sessaoativa) {
-            return res
-                .status(401)
-                .send({ message: "Você já está logado" });
-                
-            }
-        
-        sessao.insertOne({ token, id: cadastrado._id ,email});
-        res.send({ token });
+            console.log(sessaoativa)
+            return res.send({ token: sessaoativa.token, name: cadastrado.name });
+
+        }
+        sessao.insertOne({ token, id: cadastrado._id, email });
+
+        res.send({ token, name: cadastrado.name });
     } catch (err) {
         console.log(err);
         res.sendStatus(500);

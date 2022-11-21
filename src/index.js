@@ -6,6 +6,7 @@ import entrada from "./routes/entrada.route.js";
 import saida from "./routes/saida.route.js";
 import registros from "./routes/registros.route.js";
 import deletar from "./routes/deleta.route.js"
+import deletarsessao from "./routes/deletasessao.route.js"
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use(entrada);
 app.use(saida);
 app.use(registros);
 app.use(deletar);
+app.use(deletarsessao);
 
 app.listen(5000, () => {
     console.log(`Server running in port: ${5000}`);

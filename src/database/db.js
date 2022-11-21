@@ -1,9 +1,9 @@
 import dotenv from "dotenv";
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient} from "mongodb";
 
 dotenv.config();
 
-const mongoClient = new MongoClient("mongodb://localhost:27017");
+const mongoClient = new MongoClient(process.env.MONGO_URI);
 try {
   await mongoClient.connect();
   console.log("MongoDB conectado!");

@@ -17,5 +17,4 @@ export async function entrada (req,res){
         res.status(500).send(err);
     }
 
-
 }
